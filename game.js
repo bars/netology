@@ -29,17 +29,17 @@ class Actor {
         return 'actor';
     }
     get left() {
-            return this.pos.x;
-        }
-        get top() {
-            return this.pos.y;
-        }
-        get right() {
-            return this.pos.x + this.size.x;
-        }
-        get bottom() {
-            return this.pos.y + this.size.y;        
-        }
+        return this.pos.x;
+    }
+    get top() {
+        return this.pos.y;
+    }
+    get right() {
+        return this.pos.x + this.size.x;
+    }
+    get bottom() {
+        return this.pos.y + this.size.y;        
+    }
     act() {
     }
     isIntersect(actor) {
@@ -282,10 +282,8 @@ class FireRain extends Fireball {
 
 class Coin extends Actor {
     constructor(pos = new Vector(0, 0)) {
-        super();
-        this.size = new Vector(0.6, 0.6);
-        this.posOrigin = pos.plus(new Vector(0.2, 0.1));
-        this.pos = pos.plus(new Vector(0.2, 0.1));
+        super(pos.plus(new Vector(0.2, 0.1)), new Vector(0.6, 0.6));
+        this.posOrigin = this.pos;
         this.springSpeed = 8;
         this.springDist = 0.07;
         this.spring = Math.random() * (2 * Math.PI);
