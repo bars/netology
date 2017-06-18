@@ -46,31 +46,10 @@ class Actor {
         if (!(actor instanceof Actor)) {
             throw new Error('Передан не Actor');
         }
-        
-        let topLeft = new Vector(this.left, this.top),
-            topRight = new Vector(this.right, this.top),
-            bottomLeft = new Vector(this.left, this.bottom),
-            bottomRight = new Vector(this.right, this.bottom),
-            angles = [topLeft, topRight, bottomLeft, bottomRight],
-            
-            actorTopLeft = new Vector(actor.left, actor.top),
-            actorTopRight = new Vector(actor.right, actor.top),
-            actorBottomLeft = new Vector(actor.left, actor.bottom),
-            actorBottomRight = new Vector(actor.right, actor.bottom),
-            actorAngles = [actorTopLeft, actorTopRight, actorBottomLeft, actorBottomRight];
-        
-        function pointIntersect(x, y, actor) {
-            if ((x >= actor.left) && (x <= actor.right) && (y >= actor.top) && (y <= actor.bottom)) {
-                return true;
-            }
-            return false;
+        if ((actor === this) || (actor.left >= this.right) || (actor.right <= this.left) || (actor.top >= this.bottom) || (actor.bottom <= this.top)) {
+        return false;
         }
-                
-        if (((actor === this) || ((actor.size.x < 0) || (actor.size.y < 0))) || ((this.left == actor.right) || (this.right == actor.left) || (this.top == actor.bottom) || (this.bottom == actor.top))){
-            return false;
-        }
-
-        return angles.some(angle => {return pointIntersect(angle.x, angle.y, actor)}) ? true : actorAngles.some(angle => {return pointIntersect(angle.x, angle.y, this)});
+        return true;
     }
 }
 class Level { 
