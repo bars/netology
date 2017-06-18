@@ -97,16 +97,24 @@ class Level {
             topRight = new Vector(Math.ceil(movePos.x + size.x - 1), Math.floor(movePos.y)),
             bottomLeft = new Vector(Math.floor(movePos.x), Math.ceil(movePos.y + size.y -1)),
             bottomRight = new Vector(Math.ceil(movePos.x + size.x -1), Math.ceil(movePos.y + size.y -1)),
+            points = [],
             horizontalPoints = topRight.x - topLeft.x,
             verticalPoints = bottomLeft.y - topLeft.y;
         
         for (let i = topLeft.y; (i <= verticalPoints + topLeft.y); i++) {
             for (let n = topLeft.x; (n <= horizontalPoints + topLeft.x); n++) {
-               if (this.grid[i][n] !== undefined) {
+                if (this.grid[i][n] !== undefined) {
                     return this.grid[i][n]
-               }
+                }
             }
-        }        
+        }
+        
+        if (points.includes('lava')) {
+            return 'lava';
+        }
+        if (points.includes('wall')) {
+            return 'wall';
+        }
     }
     removeActor(actor) {
         this.actors.splice(this.actors.indexOf(actor), 1);
