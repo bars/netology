@@ -103,9 +103,7 @@ class Level {
         
         for (let i = topLeft.y; (i <= verticalPoints + topLeft.y); i++) {
             for (let n = topLeft.x; (n <= horizontalPoints + topLeft.x); n++) {
-                if (this.grid[i][n] !== undefined) {
-                    return this.grid[i][n]
-                }
+                points.push(this.grid[i][n]);
             }
         }
         
