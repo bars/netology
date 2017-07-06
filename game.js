@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 class Vector {
     constructor(x = 0, y = 0) {
@@ -122,7 +122,7 @@ class Level {
             return true;
         }
         return !this.actors.some(actor => {
-            return (actor.type === typeActor);
+            actor.type === typeActor;
         });
     }
     playerTouched(typeActor, actor) {
